@@ -1,0 +1,41 @@
+<html>
+  <body
+    style="
+      background-color: #2b87d1;
+      overflow: hidden;
+      text-align: center;
+      height: 100vh;
+      color: #fff;
+    "
+  >
+    <h1 id="g" style="transform: translateY(44vh);">Click to start</h1>
+  </body>
+  <script>
+      s = 0;
+      c = ["#2b87d1", "#ce2636", "#39a751"];
+      b = document.body;
+      g = document.getElementById("g");
+    b.onclick = () => {
+      switch (((e = Date.now()), s)) {
+        case 0:
+          z(1), m();
+          break;
+        case 1:
+          z(0), (g.innerHTML = "Too early<br/>Click to restart"), clearTimeout(h);
+          break;
+        case 2:
+          (g.innerHTML = `${e - f}ms<br/>Click to restart`), z(0);
+      }
+    };
+    const z = e => {
+        (s = e), (b.style.backgroundColor = c[e]);
+      },
+      m = () => {
+        g.innerHTML = "Wait for green";
+        e = Math.floor(4501 * Math.random()) + 3e3;
+        h = setTimeout(() => {
+          (g.innerHTML = "Click now"), z(2), (f = Date.now());
+        }, e);
+      };
+  </script>
+</html>
