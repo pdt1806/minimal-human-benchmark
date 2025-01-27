@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const QRCode = require("qrcode");
 
-const filePath = path.join(__dirname, "index.html");
+const filePath = path.join(__dirname, "pre_index.html");
 
 fs.readFile(filePath, "utf8", (err, data) => {
   if (err) {
@@ -27,7 +27,8 @@ fs.readFile(filePath, "utf8", (err, data) => {
     .replaceAll(": ", ":")
     .replaceAll(" * ", "*")
     .replaceAll(" + ", "+");
-  const minifiedFilePath = path.join(__dirname, "index_minified.html");
+
+  const minifiedFilePath = path.join(__dirname, "index.html");
   fs.writeFile(minifiedFilePath, minified, "utf8", (err) => {
     if (err) {
       console.error("Error writing file:", err);
@@ -37,7 +38,7 @@ fs.readFile(filePath, "utf8", (err, data) => {
 
   const dataUri = "data:text/html;base64," + Buffer.from(minified).toString("base64");
 
-  QRCode.toFile(path.join(__dirname, "qrcode.png"), dataUri, (err) => {
+  QRCode.toFile(path.join(__dirname, "qrcode.png"), dataUri, { errorCorrectionLevel: "L" }, (err) => {
     if (err) {
       console.error("Error generating QR code:", err);
       return;
