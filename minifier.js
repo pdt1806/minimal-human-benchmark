@@ -26,7 +26,11 @@ fs.readFile(filePath, "utf8", (err, data) => {
     .replaceAll(" }", "}")
     .replaceAll(": ", ":")
     .replaceAll(" * ", "*")
-    .replaceAll(" + ", "+");
+    .replaceAll(" + ", "+")
+    .replaceAll(" == ", "==")
+    .replaceAll(" ? ", "?")
+    .replaceAll(" :", ":")
+    .replaceAll(" - ", "-");
 
   const minifiedFilePath = path.join(__dirname, "index.html");
   fs.writeFile(minifiedFilePath, minified, "utf8", (err) => {
