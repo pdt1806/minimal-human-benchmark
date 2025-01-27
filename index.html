@@ -1,18 +1,17 @@
 <html>
   <body
     style="
-      background-color: #2b87d1;
       overflow: hidden;
       text-align: center;
       height: 100vh;
-      color: #fff;
+      color: fff;
     "
   >
-    <h1 id="g" style="transform: translateY(44vh);">Click to start</h1>
+    <h1 id='g' style="transform: translateY(44vh);">Click to start</h1>
   </body>
   <script>
       s = 0;
-      c = ["#2b87d1", "#ce2636", "#39a751"];
+      c = ["2b87d1", "ce2636", "39a751"];
       b = document.body;
       g = document.getElementById("g");
     b.onclick = () => {
@@ -37,5 +36,6 @@
           (g.innerHTML = "Click now"), z(2), (f = Date.now());
         }, e);
       };
+      z(0);
   </script>
 </html>
